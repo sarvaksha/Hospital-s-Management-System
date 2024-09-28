@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription Form</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'forms.css' %}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url("{% static 'images/background.jpg' %}") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Write Prescription</h1>
+
+        <form action="." method="post">
+            {% csrf_token %}
+            <table>
+                {{ form.as_table}}
+            </table>
+            <button type="submit">Submit</button>
+        </form>
+        <form action="{% url 'doctor_home' doctor_id %}" method="get">
+            {% csrf_token %}
+            <button type="submit" value="submit">Go Back</button>
+        </form>
+
+
+    </div>
+
+
+</body>
+
+</html>
